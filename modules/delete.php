@@ -2,8 +2,9 @@
 
 if(isset($_POST["id"])) {
   $id = intval($_POST["id"]);
-  // delete by id
-  // redirect
+  $DB->exec("DELETE FROM `users` WHERE `id` = ?", [$id]);
+  header("Location: /"); 
+  exit();
 } 
 
 //EOF

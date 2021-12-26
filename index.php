@@ -1,5 +1,7 @@
 <?php
 
+require_once PATH_CONFIG . "core.php";
+
 $isLogin = false;
 
 if(isset($_SESSION["user"]["id"])) {
@@ -20,20 +22,24 @@ if($isLogin) {
   // edit user
   // delete user
 
+  require_once PATH_CONFIG . "core.php";
+
+  $DB = new DB();  
+
   switch ($_POST["req"]) {
     case "add":
-      require_once "./modules/create.php";
+      require_once PATH_MODULES . "create.php";
       $tmp = "form";
       break;
     case "edit":
-      require_once "./modules/update.php";
+      require_once PATH_MODULES . "update.php";
       $tmp = "form";
       break;
     case "delete":
-      require_once "./modules/delete.php";
+      require_once PATH_MODULES . "delete.php";
       break;
     default: 
-      require_once "./modules/read.php";
+      require_once PATH_MODULES . "read.php";
       $tmp = "data";      
     break;
   }
@@ -42,6 +48,6 @@ if($isLogin) {
   $tmp = "login"; 
 }
 
-require_once "./tmp/main.php";
+require_once PATH_TMP . "main.php";
 
 //EOF
